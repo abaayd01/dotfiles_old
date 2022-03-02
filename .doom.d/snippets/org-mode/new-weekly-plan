@@ -1,0 +1,28 @@
+# -*- mode: snippet -*-
+# name: new weekly plan
+# key: nwp
+# --
+* Todos
+* Big Rocks this Week
+* Thoughts
+* [2022-01-03 Mon]
+** Todos
+** Notes
+* [2022-01-04 Tue]
+** Todos
+** Notes
+* [2022-01-05 Wed]
+** Todos
+** Notes
+* [2022-01-06 Thu]
+** Todos
+** Notes
+* [2022-01-07 Fri]
+** Todos
+** Notes
+* [2022-01-08 Sat]
+** Todos
+** Notes
+* [2022-01-09 Sun]
+** Todos
+** Notes
