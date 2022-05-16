@@ -60,3 +60,16 @@ map <leader>, :action RecentFiles<CR>
 map <leader>ot :action ActivateTerminalToolWindow<CR>
 map <leader>med :action :cursive.repl.actions/run-top-sexp<CR>
 map <leader>mee :action :cursive.repl.actions/run-last-sexp<CR>
+
+set NERDTree
+
+map <leader>ntt :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<CR>
+map <leader>nn :NERDTree<CR>
+
+:set ignorecase
+:set smartcase
+:set incsearch
+:set hlsearch
+
+:nnoremap <ESC> :nohlsearch<CR>
