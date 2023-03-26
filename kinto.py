@@ -191,6 +191,12 @@ define_conditional_modmap(re.compile(termStr, re.IGNORECASE), {
     
 # Keybindings for IntelliJ
 define_keymap(re.compile("^jetbrains-(?!.*toolbox).*$", re.IGNORECASE),{
+    # Movement
+    # K("C-j"): K("Down"),
+    # K("C-k"): K("Up"),
+    K("Super-j"): K("Down"),
+    K("Super-k"): K("Up"),
+
     # General
     K("C-Key_0"): K("Alt-Key_0"),                 # Open corresponding tool window
     K("C-Key_1"): K("Alt-Key_1"),                 # Open corresponding tool window
@@ -208,15 +214,15 @@ define_keymap(re.compile("^jetbrains-(?!.*toolbox).*$", re.IGNORECASE),{
     # Debugging
     K("C-M-r"): K("F9"),                        # Resume program
     # Search/Replace
-    K("C-g"): K("F3"),                          # Find next
-    K("C-Shift-F3"): K("Shift-F3"),             # Find previous
-    K("Super-g"): K("Alt-j"),                     # Select next occurrence
-    K("C-Super-g"): K("C-M-Shift-j"),           # Select all occurrences
+    # K("C-g"): K("F3"),                          # Find next
+    # K("C-Shift-F3"): K("Shift-F3"),             # Find previous
+    # K("Super-g"): K("Alt-j"),                     # Select next occurrence
+    # K("C-Super-g"): K("C-M-Shift-j"),           # Select all occurrences
     K("Super-Shift-g"): K("Alt-Shift-j"),         # Unselect occurrence
     # Editing
     K("Super-Space"): K("LC-Space"),            # Basic code completion
     K("Super-Shift-Space"): K("LC-Shift-Space"),# Smart code completion
-    K("Super-j"): K("C-q"),                     # Quick documentation lookup
+    #K("Super-j"): K("C-q"),                     # Quick documentation lookup
     K("C-n"): K("Alt-Insert"),                    # Generate code...
     K("Super-o"): K("C-o"),                     # Override methods
     K("Super-i"): K("C-i"),                     # Implement methods
@@ -486,7 +492,14 @@ define_keymap(re.compile(browserStr, re.IGNORECASE),{
     # Use Cmd+Braces keys for tab navigation instead of page navigation 
     # K("C-Left_Brace"): K("C-Page_Up"),
     # K("C-Right_Brace"): K("C-Page_Down"),
+    K("Super-j"): K("Down"),
+    K("Super-k"): K("Up")
 }, "General Web Browsers")
+
+define_keymap(re.compile("emacs", re.IGNORECASE),{
+    K("Super-j"): K("Down"),
+    K("Super-k"): K("Up")
+}, "Emacs")
 
 define_keymap(re.compile("^ulauncher$", re.IGNORECASE),{
     K("RC-Key_1"):      K("Alt-Key_1"),      # Remap Ctrl+[1-9] and Ctrl+[a-z] to Alt+[1-9] and Alt+[a-z]
@@ -640,34 +653,34 @@ define_keymap(lambda wm_class: wm_class.casefold() not in mscodes,{
 }, "Wordwise - not vscode")
 
 # Keybindings for VS Code
-define_keymap(re.compile(codeStr, re.IGNORECASE),{
-    K("Super-Space"): K("LC-Space"),                        # Basic code completion
+# define_keymap(re.compile(codeStr, re.IGNORECASE),{
+    # K("Super-Space"): K("LC-Space"),                        # Basic code completion
     # Wordwise remaining - for VS Code
     # Alt-F19 hack fixes Alt menu activation
-    K("Alt-Left"): [K("Alt-F19"),K("C-Left")],                  # Left of Word
-    K("Alt-Right"): [K("Alt-F19"),K("C-Right")],                # Right of Word
-    K("Alt-Shift-Left"): [K("Alt-F19"),K("C-Shift-Left")],      # Select Left of Word
-    K("Alt-Shift-Right"): [K("Alt-F19"),K("C-Shift-Right")],    # Select Right of Word
+    # K("Alt-Left"): [K("Alt-F19"),K("C-Left")],                  # Left of Word
+    # K("Alt-Right"): [K("Alt-F19"),K("C-Right")],                # Right of Word
+    # K("Alt-Shift-Left"): [K("Alt-F19"),K("C-Shift-Left")],      # Select Left of Word
+    # K("Alt-Shift-Right"): [K("Alt-F19"),K("C-Shift-Right")],    # Select Right of Word
 
     # K("C-PAGE_DOWN"):         pass_through_key,             # cancel next_view
     # K("C-PAGE_UP"):           pass_through_key,             # cancel prev_view
-    K("C-M-Left"):              K("C-PAGE_UP"),             # next_view
-    K("C-M-Right"):             K("C-PAGE_DOWN"),           # prev_view
-    K("RC-Shift-Left_Brace"):   K("C-PAGE_UP"),             # next_view
-    K("RC-Shift-Right_Brace"):  K("C-PAGE_DOWN"),           # prev_view
+    # K("C-M-Left"):              K("C-PAGE_UP"),             # next_view
+    # K("C-M-Right"):             K("C-PAGE_DOWN"),           # prev_view
+    # K("RC-Shift-Left_Brace"):   K("C-PAGE_UP"),             # next_view
+    # K("RC-Shift-Right_Brace"):  K("C-PAGE_DOWN"),           # prev_view
 
     # VS Code Shortcuts
-    K("C-g"): pass_through_key,                 # cancel Go to Line...
-    K("Super-g"): K("C-g"),                     # Go to Line...
-    K("F3"): pass_through_key,                  # cancel Find next
-    K("C-h"): pass_through_key,                 # cancel replace
-    K("C-M-f"): K("C-h"),                       # replace
-    K("C-Shift-h"): pass_through_key,           # cancel replace_next
-    K("C-M-e"): K("C-Shift-h"),                 # replace_next
-    K("f3"): pass_through_key,                  # cancel find_next
-    K("C-g"): K("f3"),                          # find_next
-    K("Shift-f3"): pass_through_key,            # cancel find_prev
-    K("C-Shift-g"): K("Shift-f3"),              # find_prev
+    # K("C-g"): pass_through_key,                 # cancel Go to Line...
+    # K("Super-g"): K("C-g"),                     # Go to Line...
+    # K("F3"): pass_through_key,                  # cancel Find next
+    # K("C-h"): pass_through_key,                 # cancel replace
+    # K("C-M-f"): K("C-h"),                       # replace
+    # K("C-Shift-h"): pass_through_key,           # cancel replace_next
+    # K("C-M-e"): K("C-Shift-h"),                 # replace_next
+    # K("f3"): pass_through_key,                  # cancel find_next
+    # K("C-g"): K("f3"),                          # find_next
+    # K("Shift-f3"): pass_through_key,            # cancel find_prev
+    # K("C-Shift-g"): K("Shift-f3"),              # find_prev
     # K("Super-c"): K("LC-c"),                    # Default - Terminal - Sigint
     # K("Super-x"): K("LC-x"),                    # Default - Terminal - Exit nano
     # K("Alt-c"): K("LC-c"),                        #  Chromebook/IBM - Terminal - Sigint
@@ -678,7 +691,7 @@ define_keymap(re.compile(codeStr, re.IGNORECASE),{
     # K("Super-Shift-down"): K("Alt-Shift-down"),   # multi-cursor down - Sublime
     # K(""): pass_through_key,                    # cancel
     # K(""): K(""),                               #
-}, "Code")
+# }, "Code")
 
 # Keybindings for Sublime Text
 define_keymap(re.compile(sublimeStr, re.IGNORECASE),{
@@ -842,3 +855,10 @@ define_keymap(re.compile(termStr, re.IGNORECASE),{
     K("RC-SLASH"): K("C-Shift-SLASH"),
     K("RC-KPASTERISK"): K("C-Shift-KPASTERISK"),
 }, "terminals")
+
+define_keymap(None, {
+    # K("C-j"): K("Down"),
+    # K("C-k"): K("Up"),
+    K("Super-j"): K("Down"),
+    K("Super-k"): K("Up")
+})
